@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Nevisande(models.Model):
+class Author(models.Model):
     author = models.CharField(max_length=256, unique=True)
 
     def __str__(self):
@@ -10,7 +10,7 @@ class Nevisande(models.Model):
 
 class Book(models.Model):
     book_name = models.CharField(max_length=256, null=True)
-    nevisande = models.ForeignKey(Nevisande, on_delete=models.CASCADE, null=True)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
     pub_date = models.DateTimeField("date published")
 
     def __str__(self):
